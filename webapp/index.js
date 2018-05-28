@@ -1,16 +1,18 @@
-import React from "react"
-import ReactDOM from "react-dom"
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 class Index extends React.Component {
   constructor() {
     super()
     this.state = {
-      todos: []
+      todos: [],
     }
   }
 
   componentDidMount() {
-    fetch('/api/todos').then(r => r.json()).then(todos => this.setState({todos}))
+    fetch('/api/todos')
+      .then(r => r.json())
+      .then(todos => this.setState({ todos }))
   }
   render() {
     return (
@@ -22,4 +24,4 @@ class Index extends React.Component {
   }
 }
 
-ReactDOM.render(<Index />, document.getElementById("index"))
+ReactDOM.render(<Index />, document.getElementById('index'))

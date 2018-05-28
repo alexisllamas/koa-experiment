@@ -1,9 +1,9 @@
-const  path = require('path')
-const HtmlWebPackPlugin = require("html-webpack-plugin")
+const path = require('path')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    app: ['./webapp/index.js']
+    app: ['./webapp/index.js'],
   },
   output: {
     filename: 'bundle.js',
@@ -15,30 +15,30 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader"
-          }
-        ]
-      }
-    ]
+            loader: 'html-loader',
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./webapp/index.html",
-      filename: "./index.html"
-    })
+      template: './webapp/index.html',
+      filename: './index.html',
+    }),
   ],
   devServer: {
     port: 3000,
     open: true,
     proxy: {
-      "/api": "http://localhost:4000/"
-    }
+      '/api': 'http://localhost:4000/',
+    },
   },
-};
+}
