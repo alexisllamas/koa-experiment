@@ -1,4 +1,4 @@
 module.exports = (router) => {
-  router.prefix('/v1')
+  router.prefix('/api')
   router.use('/todos', require('./todos'))
 }

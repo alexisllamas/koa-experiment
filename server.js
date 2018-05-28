@@ -6,33 +6,50 @@ const BodyParser = require('koa-bodyparser')
 const Helmet = require('koa-helmet')
 const respond = require('koa-respond')
 const mongoose = require('mongoose')
+const webpack = require('webpack')
 
+const config = require('./webpack.config')
 const app = new Koa()
 const router = new Router()
 
-app.use(Helmet())
+require('./routes')(router)
+
+const compiler = webpack(config)
 
 if (process.env.NODE_ENV === 'development') {
   app.use(Logger())
+    .use(async (ctx, next) => {
+      const start = new Date()
+      await next()
+      const ms = new Date() - start
+      console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+    })
 }
 
-app.use(Cors())
-app.use(BodyParser({
-  enableTypes: ['json'],
-  strict: true,
-  onerror: function (err, ctx) {
-    ctx.throw('body parse error', 422)
-  }
-}))
+app.use(Helmet())
+  .use(Cors())
+  .use(BodyParser({
+    enableTypes: ['json'],
+    strict: true,
+    onerror: function (err, ctx) {
+      ctx.throw('body parse error', 422)
+    }
+  }))
+  .use(require('koa-views')(__dirname + '/webapp', {
+    extension: 'html',
+    map: {
+      html: 'handlebars'
+    },
+    stats: {colors: true}
 
-app.use(respond())
+  }))
+  .use(respond())
 
 // API routes
-require('./routes')(router)
 app.use(router.routes())
-app.use(router.allowedMethods())
+  .use(router.allowedMethods())
+  .use(require('koa-static')('./build'))
 
 mongoose.connect('mongodb://localhost/test')
-module.exports = app
 
 module.exports = app
