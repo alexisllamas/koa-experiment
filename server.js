@@ -44,6 +44,6 @@ app.use(router.routes())
   .use(router.allowedMethods())
   .use(require('koa-static')('./build'))
 
-mongoose.connect(process.env. MONGODB_URI || 'mongodb://localhost/test')
+mongoose.connect(process.env. MONGODB_URI || 'mongodb://localhost/koa-experiment')
 
 module.exports = app
