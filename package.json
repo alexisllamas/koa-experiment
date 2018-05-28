@@ -9,7 +9,8 @@
     "build": "npm run clean && webpack --env.prod",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "server": "nodemon ./index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "@koa/cors": "^2.2.1",

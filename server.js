@@ -5,6 +5,7 @@ const Cors = require('@koa/cors')
 const BodyParser = require('koa-bodyparser')
 const Helmet = require('koa-helmet')
 const respond = require('koa-respond')
+const serve = require('koa-static')
 const mongoose = require('mongoose')
 const webpack = require('webpack')
 
@@ -35,6 +36,7 @@ app.use(Helmet())
       ctx.throw('body parse error', 422)
     }
   }))
+  .use(serve('./dist'))
   .use(respond())
 
 // API routes
