@@ -35,14 +35,6 @@ app.use(Helmet())
       ctx.throw('body parse error', 422)
     }
   }))
-  .use(require('koa-views')(__dirname + '/webapp', {
-    extension: 'html',
-    map: {
-      html: 'handlebars'
-    },
-    stats: {colors: true}
-
-  }))
   .use(respond())
 
 // API routes

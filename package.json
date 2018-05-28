@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
+    "clean": "rm -rf ./build",
+    "build": "npm run clean && webpack --env.prod",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "server": "nodemon ./index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
