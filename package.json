@@ -1,0 +1,24 @@
+{
+  "name": "koa-experiment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index",
+    "start": "cross-env NODE_ENVIRONMENT=production node index"
+  },
+  "dependencies": {
+    "@koa/cors": "^2.2.1",
+    "cross-env": "^5.1.6",
+    "dotenv": "^5.0.1",
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-helmet": "^4.0.0",
+    "koa-logger": "^3.2.0",
+    "koa-respond": "^1.0.1",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
