@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "node index.js",
     "clean": "rm -rf ./build",
     "build": "npm run clean && webpack --env.prod",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
