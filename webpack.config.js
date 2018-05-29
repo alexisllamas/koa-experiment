@@ -4,7 +4,6 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {
     app: [
-      'react-dev-utils/webpackHotDevClient',
       './webapp/index.js'
     ],
   },
@@ -48,6 +47,7 @@ module.exports = {
   devServer: {
     port: 3000,
     open: true,
+    hot: true,
     proxy: {
       '/api': 'http://localhost:4000/',
     },

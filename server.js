@@ -34,7 +34,7 @@ app
       },
     }),
   )
-  .use(serve('./dist'))
+  .use(serve(__dirname + '/dist'))
   .use(respond())
 
 // API routes

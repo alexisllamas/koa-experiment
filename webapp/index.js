@@ -1,27 +1,25 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { createTextVNode, render, Component } from 'inferno'
 
 import './styles/index.scss'
 
-class Index extends React.Component {
-  state = {
-    todos: [],
+class MyComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 0
+    };
   }
-
-  componentDidMount() {
-    fetch('/api/todos')
-      .then(r => r.json())
-      .then(todos => this.setState({ todos }))
-  }
-
   render() {
     return (
       <div>
-        <h1>Hello React</h1>
-        {this.state.todos.map(todo => <div>{todo}</div>)}
+        <h1>Header!</h1>
+        <span $HasVNodeChildren>{createTextVNode('Counter is at: ' + this.state.counter)}</span>
       </div>
-    )
+    );
   }
 }
 
-ReactDOM.render(<Index />, document.getElementById('index'))
+render(
+  <MyComponent />,
+  document.getElementById("app")
+);
