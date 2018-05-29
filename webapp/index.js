@@ -22,4 +22,4 @@ class MyComponent extends Component {
 render(
   <MyComponent />,
   document.getElementById("app")
-);
+)
