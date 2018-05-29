@@ -3,7 +3,10 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    app: ['./webapp/index.js'],
+    app: [
+      'react-dev-utils/webpackHotDevClient',
+      './webapp/index.js'
+    ],
   },
   output: {
     filename: 'bundle.js',
@@ -26,7 +29,15 @@ module.exports = {
           },
         ],
       },
-    ],
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader", // creates style nodes from JS strings
+          "css-loader", // translates CSS into CommonJS
+          "sass-loader" // compiles Sass to CSS
+        ]
+      }
+    ]
   },
   plugins: [
     new HtmlWebPackPlugin({

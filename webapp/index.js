@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import './styles/index.scss'
+
 class Index extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      todos: [],
-    }
+  state = {
+    todos: [],
   }
 
   componentDidMount() {
@@ -14,6 +13,7 @@ class Index extends React.Component {
       .then(r => r.json())
       .then(todos => this.setState({ todos }))
   }
+
   render() {
     return (
       <div>
