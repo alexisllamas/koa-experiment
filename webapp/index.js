@@ -1,7 +1,5 @@
 import { createTextVNode, render, Component } from 'inferno'
 
-import './styles/index.scss'
-
 class MyComponent extends Component {
   constructor(props) {
     super(props)
